@@ -38,17 +38,20 @@ boards, defined at the bottom of the file:
 Otherwise you can define your own boards, and use them!
 
 
+
+
 How it Works
 ------------
 
-We'll ignore '¡EL MONSTER GRAPHICS ENGINE!' for now, since, it's somewhat ah.. incomplete, shall we say?
+We'll ignore `¡EL MONSTER GRAPHICS ENGINE!` in the source code for now, since,
+it's somewhat ah.. incomplete, shall we say?
 
-No, all the magic happens in the `iterateBoard` function! When it gets a
-non-empty board, it generates a list of all the cells in that board which could
-change in the next turn. And for each of those cells, it counts up how many of
-its neighbours are alive right now.
+No, no, the magic all happens in the `iterateBoard` function! When you feed it a
+non-empty board, it gleefully generates a list of all the cells in that board
+which could change in the next turn.
 
-By Conway's rules of life:
+For each of those cells, it counts up how many of its neighbours are alive right
+now, and applies Conway's rules of life, in the `iterateCell` function:
 
 * If a living cell has less than 2 neighbours, it dies of
     loneliness (cue: 'Awwww's!)
@@ -59,12 +62,20 @@ By Conway's rules of life:
     happens - a living cell appears between the 3 of them (it's acceptable in
     some cultures!)
 
-All the above happens in the `iterateCell` function.
+And after chewing through all the cells, applying these rules, `iterateBoard`
+spits out a new board. Well, almost. It throws away all those pesky dead cells
+which were hanging around, and using up space, with the `onlyActiveCells`
+function, so we can forget about them (although may we never forget their
+sacrifice, etc. etc.)
 
 Everything else is really just a (complicated, computationally inefficient...)
 helper function! Just the definitions down the page to get to the bottom of it
 all, so to speak...
 
-<!-- Links -->
+
+
+
+
+<!-- link refs -->
 [gol]:  http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 [glider]: http://en.wikipedia.org/wiki/Glider_(Conway%27s_Life)
