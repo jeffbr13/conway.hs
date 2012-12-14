@@ -59,18 +59,18 @@ now, and applies Conway's rules of life, in the `iterateCell` function:
     something - and the poor cell dies then, too!
 * But if a living cell has just 2 or 3 neighbours, everything is fine and dandy.
 * In fact, if an empty cell has exactly 3 neighbours, then something beautiful
-    happens - a living cell appears between the 3 of them (it's acceptable in
-    some cultures!)
+    happens - a living cell appears between the 3 of them (because that's
+    acceptable in some cultures, okay!?)
 
 And after chewing through all the cells, applying these rules, `iterateBoard`
 spits out a new board. Well, almost. It throws away all those pesky dead cells
 which were hanging around, and using up space, with the `onlyActiveCells`
-function, so we can forget about them (although may we never forget their
-sacrifice, etc. etc.)
+function, so we can forget about them! (Although we will never forget their
+sacrifices, etc. etc.)
 
 Everything else is really just a (complicated, computationally inefficient...)
-helper function! Just the definitions down the page to get to the bottom of it
-all, so to speak...
+helper function! Just follow the definitions down the page to get to the bottom
+of it all, so to speak...
 
 
 
