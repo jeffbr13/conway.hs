@@ -56,7 +56,7 @@ iterateCell (EmptyCell p q) n
 
 data Cell   = ActiveCell { x :: Int, y :: Int}
             | EmptyCell { x :: Int, y:: Int}
-            --deriving Show -- (replaced by ¡MONSTER GRAPHICS ENGINE!)
+            --deriving Show -- (replaced by ¡EL MONSTER GRAPHICS ENGINE!)
             deriving Eq
 
 
@@ -90,6 +90,9 @@ square :: Board -> Board
 square bd   = unionBy smPosition bd [EmptyCell {x=p, y=q} | p <-[(minimum ps)..(maximum ps)], q <-[(minimum qs)..(maximum qs)]]
             where
             (ps,qs) = unzip [(x c, y c) | c <- bd]
+
+
+
 
 
 
@@ -130,14 +133,6 @@ smPositionCellCriteria p q r s = and [(p == r), (q==s)]
 -- ------------------------------------------------
 
 
-
-
-new :: Cell -> Cell
-new c   = ActiveCell {x=(x c), y=(y c)}
-
-kill :: Cell -> Cell
-kill c  = EmptyCell {x=(x c), y=(y c)}
-
 isActive :: Cell -> Bool
 isActive (ActiveCell _ _)   = True
 isActive (EmptyCell _ _)    = False
@@ -153,7 +148,6 @@ allNeighboursOf :: [Cell] -> Cell -> [Cell]
 bd `allNeighboursOf` c = delete c (bd `cellsAround` c)
 
 
--- -------------------------------
 
 mkEmptyNeighbours :: Cell -> [Cell]
 mkEmptyNeighbours c = [EmptyCell {x=r, y=s} | r <- [p-1..p+1], s <- [q-1..q+1], (r /= s) || (s /= 0)]
@@ -169,7 +163,7 @@ mkEmptyNeighbours c = [EmptyCell {x=r, y=s} | r <- [p-1..p+1], s <- [q-1..q+1], 
 
 
 
--- ¡MONSTER GRAPHICS ENGINE! below:
+-- ¡EL MONSTER GRAPHICS ENGINE! below:
 -- -----------------------------------------------------------------------------
 
 
@@ -205,7 +199,6 @@ printRow row     = do
 -- Sorting the board into rows -------
 rows :: Board -> [[Cell]]
 rows    = groupBy sameRow . sortBoardY
-
 
 sameRow :: Cell -> Cell -> Bool
 sameRow c1 c2   =   y c1 == y c2
